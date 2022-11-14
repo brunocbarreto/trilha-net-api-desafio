@@ -50,8 +50,6 @@ namespace TrilhaApiDesafio.Controllers
         [HttpGet("ObterPorStatus")]
         public IActionResult ObterPorStatus(EnumStatusTarefa status)
         {
-            // TODO: Buscar  as tarefas no banco utilizando o EF, que contenha o status recebido por parâmetro
-            // Dica: Usar como exemplo o endpoint ObterPorData
             var tarefas = _context.Tarefas.Where(x => x.Status == status);
             return Ok(tarefas);
         }
@@ -65,7 +63,6 @@ namespace TrilhaApiDesafio.Controllers
             _context.Add(tarefa);
             _context.SaveChanges();
 
-            // TODO: Adicionar a tarefa recebida no EF e salvar as mudanças (save changes)
             return CreatedAtAction(nameof(ObterPorId), new { id = tarefa.Id }, tarefa);
         }
 
